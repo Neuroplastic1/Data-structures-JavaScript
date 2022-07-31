@@ -30,4 +30,12 @@ while (currentNode !== null) {
   console.log(currentNode.data)
   currentNode = currentNode.next;
 }
+
+/* should log
+Vanilla
+Berry Tasty
+Coconuts for Coconut
+undefined
+*/
+
 module.exports = Node;
