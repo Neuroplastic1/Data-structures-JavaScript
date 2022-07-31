@@ -14,7 +14,7 @@ class Queue {
   isEmpty() {
     return this.size === 0
   }
-  
+
   enqueue(data) {
     this.queue.addToTail(data)
     this.size = this.size + 1
@@ -22,9 +22,14 @@ class Queue {
   }
 
   dequeue() {
-    const data = this.queue.removeHead();
-    this.size--;
-    console.log(`Removed ${data}! Queue size is ${this.size}.`)
+    if (!this.isEmpty()) {
+      const data = this.queue.removeHead();
+      this.size--;
+      console.log(`Removed ${data} from queue! Queue size is now ${this.size}.`);
+      return data;
+    } else {
+      throw (`Queue is empty!`)
+    }
   }
 }
 
