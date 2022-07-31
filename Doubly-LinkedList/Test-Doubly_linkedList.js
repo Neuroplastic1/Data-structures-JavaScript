@@ -1,5 +1,5 @@
 const Node = require('./Node');
-const DoublyLinkedList = require('./DoublyLinkedList');
+const DoublyLinkedList = require('./Doubly-LinkedList');
 
 const subway = new DoublyLinkedList();
 console.log(subway)

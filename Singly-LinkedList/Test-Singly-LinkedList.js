@@ -1,4 +1,4 @@
-const LinkedList = require('./LinkedList');
+const LinkedList = require('./Singly-LinkedList');
 //creating
 const seasons = new LinkedList();
 seasons.printList();
