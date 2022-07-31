@@ -11,6 +11,12 @@ class Queue {
     this.size = this.size + 1
     console.log(`Added ${data}! Queue size is now ${this.size}`)
   }
+
+  dequeue() {
+    const data = this.queue.removeHead();
+    this.size--;
+    console.log(`Removed ${data}! Queue size is ${this.size}.`)
+  }
 }
 
 module.exports = Queue;

@@ -9,3 +9,9 @@ restaurantOrder.enqueue('roast chicken');
 restaurantOrder.enqueue('quinoa salad');
 
 console.log(`restaurantOrders has ${restaurantOrder.size} nodes`)
+
+console.log('\nFood preparing...\n')
+restaurantOrder.dequeue();
+restaurantOrder.dequeue();
+restaurantOrder.dequeue();
+console.log('All orders ready!')
