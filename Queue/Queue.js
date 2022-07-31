@@ -16,9 +16,13 @@ class Queue {
   }
 
   enqueue(data) {
-    this.queue.addToTail(data)
-    this.size = this.size + 1
-    console.log(`Added ${data}! Queue size is now ${this.size}`)
+    if (this.hasRoom()) {
+      this.queue.addToTail(data);
+      this.size++;
+      console.log(`Added ${data} to queue! Queue size is now ${this.size}.`);
+    } else {
+      throw new Error("Queue is full!");
+    }
   }
 
   dequeue() {
