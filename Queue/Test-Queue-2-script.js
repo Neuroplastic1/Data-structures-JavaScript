@@ -1,4 +1,4 @@
-const runway = require('./runway');
+const runway = require('./Test-Queue-2-runway');
 
 const flights = [
   'Amsterdam Loud Bird flight #345',
