@@ -25,7 +25,7 @@ class Stack {
   }
 
   pop() {
-    if (this.isEmpty()) {
+    if (!this.isEmpty()) {
       const value = this.stack.removeHead();
       this.size--;
       return value;
