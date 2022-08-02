@@ -1,10 +1,9 @@
-/*note: below HashMap doesn't resolve collision yet.
- for example 'deer' and 'reed' will generate the same arrayIndex
- we'll handle that in the next update/commit
-*/
+
 class HashMap {
   constructor(size = 0) {
-    this.hashmap = new Array(size).fill(null);
+    this.hashmap = new Array(size)
+    .fill(null)
+    .map(() => new LinkedList());
   }
  // hash method -> input: key output: arrayIndex
   hash(key) {
@@ -18,10 +17,15 @@ class HashMap {
   // .assign() will handle the logic needed to take in a key-value pair
   // and store the value at a particular index.
   assign(key, value) {
-    // arrayIndex with the value of the hashed and compressed key.
-    const arrayIndex = this.hash(key)
-    // Assign the value to the element at the index derived from hashing, arrayIndex
-    this.hashmap[arrayIndex] = value
+    // store the hashed key in a variable arrayIndex
+    const arrayIndex = this.hash(key);
+    // store linked list at arrayIndex: in a variable linkedList
+    const linkedList = this.hashmap[arrayIndex];
+    // if linked list is empty add the key-value pair to the linked list as a node
+    if (linkedList.head === null) {
+      linkedList.addToHead({ key, value });
+      return;
+    }
   }
 
   // retrieve method -> input: key output: value
