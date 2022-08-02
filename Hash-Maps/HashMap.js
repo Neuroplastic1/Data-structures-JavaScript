@@ -1,6 +1,7 @@
 class HashMap {
   constructor(size = 0) {
-    this.hashmap = new Array(size).fill(null);
+    this.hashmap = new Array(size)
+      .fill(null);
   }
 
   hash(key) {
@@ -8,8 +9,15 @@ class HashMap {
     for (let i = 0; i < key.length; i++) {
       hashCode += hashCode + key.charCodeAt(i);
     }
-    return hashCode;
+
+    return hashCode % this.hashmap.length;
   }
 }
+
+const myHashMap = new HashMap(3)
+
+// checking if .hash is creating the same value
+console.log(myHashMap.hash('id')) // logs 1
+console.log(myHashMap.hash('id')) // logs 1 :)
 
 module.exports = HashMap;
