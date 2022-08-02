@@ -1,3 +1,7 @@
+/*note: below HashMap doesn't resolve collision yet.
+ for example 'deer' and 'reed' will generate the same arrayIndex
+ we'll handle that in the next update/commit
+*/
 class HashMap {
   constructor(size = 0) {
     this.hashmap = new Array(size).fill(null);
