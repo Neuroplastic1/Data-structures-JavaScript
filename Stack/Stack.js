@@ -7,12 +7,12 @@ class Stack {
     this.size = 0;
   }
 
-  hasRoom() {
-    return this.size < this.maxSize;
-  }
-
   isEmpty() {
     return this.size === 0;
+  }
+
+  hasRoom() {
+    return this.size < this.maxSize;
   }
 
   push(value) {
@@ -20,7 +20,15 @@ class Stack {
       this.stack.addToHead(value);
       this.size++;
     } else {
-      throw new error("Stack is full");
+      throw new Error('Stack is full');
+    }
+  }
+
+  peek() {
+    if (this.isEmpty()) {
+      return null;
+    } else {
+      return this.stack.head.data;
     }
   }
 
@@ -30,17 +38,10 @@ class Stack {
       this.size--;
       return value;
     } else {
-      console.log("Stack is empty!");
+      throw new Error('Stack is empty');
     }
   }
 
-  peek() {
-    if (this.isEmpty()) {
-      return this.stack.head.data;
-    } else {
-      return null;
-    }
-  }
 }
 
 module.exports = Stack;
