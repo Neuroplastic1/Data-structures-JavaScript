@@ -28,13 +28,9 @@ class HashMap {
 
 }
 
-// test:
-// store a new instance of HashMap with a size of 3
-const employees = new HashMap(3)
-// Assign employees the key-value pair '34-567' and 'Mara'
-employees.assign('34-567', 'Mara')
-// log the hash map
-// The hash map’s array can be accessed through the .hashmap property
-console.log(employees.hashmap)  // logs: [ null, 'Mara', null ]
+// test: retrieve()
+const glossary = new HashMap(3)
+glossary.assign('semordnilap','Words that form different words when reversed')
+console.log(glossary.retrieve('semordnilap'))
 
 module.exports = HashMap;
