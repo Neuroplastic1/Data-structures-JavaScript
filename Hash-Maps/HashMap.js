@@ -26,6 +26,18 @@ class HashMap {
       linkedList.addToHead({ key, value });
       return;
     }
+    let current = linkedList.head;
+    while (current) {
+      if (current.data.key === key) {
+        current.data = { key, value };
+      }
+      if (!current.getNextNode()) {
+        const newNode = new Node({ key, value });
+        current.setNextNode(newNode);
+        break;
+      }
+      current = current.getNextNode();
+    }
   }
 
   // retrieve method -> input: key output: value
