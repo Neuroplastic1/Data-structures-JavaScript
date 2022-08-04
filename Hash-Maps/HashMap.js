@@ -58,20 +58,28 @@ class HashMap {
       current = current.getNextNode();
     }
   }
-}
+
+  // retrieve method -> input: key output: value
+  retrieve(key) {
+    // store the hashed key in the constant arrayIndex
+    const arrayIndex = this.hash(key);
+    // store the head node of a list in the variable current
+    let current = this.hashmap[arrayIndex].head;
+    // while there is a valid node
+    while (current == !null) {
+      // if the current node's key matches the key
+      if (current.data.key === key) {
+        // return the current node's value
+        return current.data.value;
+      }
+      // while key doesn't match : set current to the next node in the list, traverse
+      current = current.next;
+    }
+    // if current turns out to be null, without finding the matched key:
+    // exit the while-loop and return null
+    return null;
+  }
 }
 
-// retrieve method -> input: key output: value
-retrieve(key) {
-  const arrayIndex = this.hash(key);
-  return this.hashmap[arrayIndex]
-}
-
-}
-
-// test: retrieve()
-const glossary = new HashMap(3)
-glossary.assign('semordnilap', 'Words that form different words when reversed')
-console.log(glossary.retrieve('semordnilap'))
 
 module.exports = HashMap;
