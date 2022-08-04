@@ -23,6 +23,7 @@ class HashMap {
     const arrayIndex = this.hash(key);
     // store linked list at arrayIndex: in a variable linkedList
     const linkedList = this.hashmap[arrayIndex];
+    console.log(`Storing ${value} at index ${arrayIndex}`);
     // if linked list is empty add the key-value pair to the linked list as a node
     if (linkedList.head === null) {
       linkedList.addToHead({
@@ -44,7 +45,7 @@ class HashMap {
         };
       }
       // if the current node is the tail node
-      if (!current.getNextNode()) {
+      if (current.getNextNode() === null) {
         // create and store the key-value pair in the node after current
         const newNode = new Node({
           key,
@@ -66,10 +67,11 @@ class HashMap {
     // store the head node of a list in the variable current
     let current = this.hashmap[arrayIndex].head;
     // while there is a valid node
-    while (current == !null) {
+    while (current !== null) {
       // if the current node's key matches the key
       if (current.data.key === key) {
         // return the current node's value
+        console.log(`\nRetrieving ${current.data.value} from index ${arrayIndex}`);
         return current.data.value;
       }
       // while key doesn't match : set current to the next node in the list, traverse
