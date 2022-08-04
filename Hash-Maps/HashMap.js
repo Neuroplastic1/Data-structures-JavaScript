@@ -1,11 +1,13 @@
+const LinkedList = require('./LinkedList');
+const Node = require('./Node');
 
 class HashMap {
   constructor(size = 0) {
     this.hashmap = new Array(size)
-    .fill(null)
-    .map(() => new LinkedList());
+      .fill(null)
+      .map(() => new LinkedList());
   }
- // hash method -> input: key output: arrayIndex
+  // hash method -> input: key output: arrayIndex
   hash(key) {
     let hashCode = 0;
     for (let i = 0; i < key.length; i++) {
@@ -23,34 +25,53 @@ class HashMap {
     const linkedList = this.hashmap[arrayIndex];
     // if linked list is empty add the key-value pair to the linked list as a node
     if (linkedList.head === null) {
-      linkedList.addToHead({ key, value });
+      linkedList.addToHead({
+        key,
+        value
+      });
       return;
     }
+    // store the head node of the linked list in a variable current
     let current = linkedList.head;
+    // while there is a current node
     while (current) {
+      // if the current node's key is the same as the key
       if (current.data.key === key) {
-        current.data = { key, value };
+        // store the key and value in current
+        current.data = {
+          key,
+          value
+        };
       }
+      // if the current node is the tail node
       if (!current.getNextNode()) {
-        const newNode = new Node({ key, value });
+        // create and store the key-value pair in the node after current
+        const newNode = new Node({
+          key,
+          value
+        });
         current.setNextNode(newNode);
+        //  exit the loop
         break;
       }
+      // set current to the next node
       current = current.getNextNode();
     }
   }
+}
+}
 
-  // retrieve method -> input: key output: value
-  retrieve(key) {
-    const arrayIndex = this.hash(key);
-    return this.hashmap[arrayIndex]
-  }
+// retrieve method -> input: key output: value
+retrieve(key) {
+  const arrayIndex = this.hash(key);
+  return this.hashmap[arrayIndex]
+}
 
 }
 
 // test: retrieve()
 const glossary = new HashMap(3)
-glossary.assign('semordnilap','Words that form different words when reversed')
+glossary.assign('semordnilap', 'Words that form different words when reversed')
 console.log(glossary.retrieve('semordnilap'))
 
 module.exports = HashMap;
