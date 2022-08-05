@@ -1,5 +1,7 @@
-// recursiveSum() recursively finds the sum of a number
-// and all positive numbers less than it
+/*
+recursiveSum() recursively finds the sum of a number
+and all positive numbers less than it
+*/
 const recursiveSum = (n) => {
   // basecase
   if (n === 1) {
@@ -13,4 +15,4 @@ const recursiveSum = (n) => {
   }
 }
 
-console.log(recursiveSum(4))
+console.log(recursiveSum(9))
