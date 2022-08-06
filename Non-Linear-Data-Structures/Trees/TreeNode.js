@@ -44,9 +44,28 @@ class TreeNode {
   }
 
   depthFirstTraversal() {
+    // For each node Display its data
     console.log(this.data);
+    // For each child in children, call itself recursively
     this.children.forEach(child => child.depthFirstTraversal());
-  }  
+  }
+
+  breadthFirstTraversal() {
+    // Assign an array to contain the current root node
+    // The current TreeNode is referenced using just the this keyword
+    let queue = [ this ]
+    // while queue (array) is not empty
+    while(queue.length > 0) {
+      // Extract the first tree node from the array
+      const current = queue.shift()
+      // Display tree node's data
+      console.log(current.data)
+      // Append tree node's children to the queue array
+      // do this so that we can traverse the current node’s children
+      // after we finish traversing its siblings
+      queue = queue.concat(current.children)
+    }
+  }
 
 };
 

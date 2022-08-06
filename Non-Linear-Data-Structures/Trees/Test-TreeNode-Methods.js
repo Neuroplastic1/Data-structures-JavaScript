@@ -26,7 +26,8 @@ for (let i = 0; i < 3; i++) {
 // pretty-print the tree
 tree.print();
 tree.depthFirstTraversal()
-/* logs:
+tree.breadthFirstTraversal()
+/* print() logs:
 1
 -- 19
 -- -- 6
