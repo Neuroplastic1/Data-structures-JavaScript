@@ -25,8 +25,7 @@ for (let i = 0; i < 3; i++) {
 
 // pretty-print the tree
 tree.print();
-console.log(tree)
-
+tree.depthFirstTraversal()
 /* logs:
 1
 -- 19
@@ -50,12 +49,4 @@ console.log(tree)
 -- -- 14
 -- -- -- 10
 -- -- -- 3
-
-TreeNode {
-  data: 1,
-  children:
-   [ TreeNode { data: 19, children: [Object] },
-     TreeNode { data: 5, children: [Object] },
-     TreeNode { data: 5, children: [Object] } ] }
-
  */
