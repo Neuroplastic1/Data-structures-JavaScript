@@ -28,6 +28,26 @@ class BinaryTree {
       }
     }
   }
+
+
+  // Retrieve a Node by Value
+  getNodeByValue(value) {
+    // If target value is the same as the current node value
+    if (this.value === value) {
+      // Return the current node
+      return this;
+    // If target value is less than the root node's value and there is a left child node
+    } else if ((this.left) && (value < this.value)) {
+        // Recursively search from the left child node
+        return this.left.getNodeByValue(value);
+    // Else if there is a right child node
+    } else if (this.right) {
+        // Recursively search from the right child node
+        return this.right.getNodeByValue(value);
+    } else {
+      return null;
+    }
+  }
 };
 
 module.exports = BinaryTree;
