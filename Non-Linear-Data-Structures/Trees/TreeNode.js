@@ -46,7 +46,7 @@ class TreeNode {
   depthFirstTraversal() {
     // For each node Display its data
     console.log(this.data);
-    // For each child in children, call itself recursively
+    // For each child in children, call DFT (itself) recursively
     this.children.forEach(child => child.depthFirstTraversal());
   }
 
@@ -60,6 +60,7 @@ class TreeNode {
       const current = queue.shift()
       // Display tree node's data
       console.log(current.data)
+      console.log(current.children)
       // Append tree node's children to the queue array
       // do this so that we can traverse the current node’s children
       // after we finish traversing its siblings

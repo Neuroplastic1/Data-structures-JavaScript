@@ -1,5 +1,5 @@
 const binarySearch = (arr, target) => {
-
+// 
   let left = 0;
   let right = arr.length;
   // while loop that continues to execute
@@ -8,16 +8,15 @@ const binarySearch = (arr, target) => {
     // find the value of the middle index
     const indexToCheck = Math.floor((left + right) / 2);
     const checking = arr[indexToCheck];
-    console.log(indexToCheck);
-      // return the index if the value is equal to the target
+    // return the index if the value is equal to the target
     if (checking === target) {
       return indexToCheck;
-      // if target is greater htat the value
-      // set left equal to current index plus one
+    // if target is greater than the value
     } else if (checking < target) {
+      // set left equal to current index plus one
       left = indexToCheck + 1;
+    // if target is less than the value
     } else {
-      // if target is less than the value
       // set right equal to the current index
       right = indexToCheck;
     }

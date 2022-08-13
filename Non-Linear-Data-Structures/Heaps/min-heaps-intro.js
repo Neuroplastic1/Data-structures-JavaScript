@@ -1,10 +1,19 @@
-// In a min-heap, for any given element,
-// its parent’s value is less than or equal to its value.
-
 class MinHeap {
   constructor() {
-    this.heap = [null];
+    this.heap = [ null ];
     this.size = 0;
+  }
+
+  popMin() {
+    if (this.size === 0) {
+      return null 
+    }
+    const min = this.heap[1];
+    this.heap[1] = this.heap[this.size];
+    this.heap.pop();
+    this.size--;
+    this.heapify();
+    return min;
   }
 
   add(value) {
@@ -13,23 +22,16 @@ class MinHeap {
     this.bubbleUp();
   }
 
-  popMin() {
-    if (this.size === 0) {
-      return null
-    }
-    const min = this.heap[1];
-    this.heap[1] = this.heap[this.size];
-    this.size--;
-    this.heap.pop();
-    this.heapify();
-    return min;
-  }
-
   bubbleUp() {
     let current = this.size;
+    let swapCount = 0;
     while (current > 1 && this.heap[getParent(current)] > this.heap[current]) {
       this.swap(current, getParent(current));
       current = getParent(current);
+      swapCount++;
+    }
+    if (this.size == 10000) {
+      console.log(`Heap of ${this.size} elements restored with ${swapCount} swaps`);
     }
   }
 
@@ -37,30 +39,35 @@ class MinHeap {
     let current = 1;
     let leftChild = getLeft(current);
     let rightChild = getRight(current);
-    // Check that there is something to swap (only need to check the left if both exist)
-    while (this.canSwap(current, leftChild, rightChild)){
+    let swapCount = 0;
+
+    while (this.canSwap(current, leftChild, rightChild)) {
       // Only compare left & right if they both exist
       if (this.exists(leftChild) && this.exists(rightChild)) {
+
         // Make sure to swap with the smaller of the two children
         if (this.heap[leftChild] < this.heap[rightChild]) {
           this.swap(current, leftChild);
           current = leftChild;
+	  swapCount++;
         } else {
           this.swap(current, rightChild);
           current = rightChild;
+	  swapCount++;
         }
       } else {
         // If only one child exist, always swap with the left
         this.swap(current, leftChild);
         current = leftChild;
+	swapCount++;
       }
       leftChild = getLeft(current);
       rightChild = getRight(current);
-    }
-  }
 
-  swap(a, b) {
-    [this.heap[a], this.heap[b]] = [this.heap[b], this.heap[a]];
+    }
+    if (this.size == 9999) {
+      console.log(`Heap of ${this.size} elements restored with ${swapCount} swaps`);
+    }
   }
 
   exists(index) {
@@ -74,6 +81,11 @@ class MinHeap {
       || this.exists(rightChild) && this.heap[current] > this.heap[rightChild]
     );
   }
+
+  swap(a, b) {
+    [this.heap[a], this.heap[b]] = [this.heap[b], this.heap[a]];
+  }
+
 }
 
 const getParent = current => Math.floor((current / 2));

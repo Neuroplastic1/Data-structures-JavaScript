@@ -1,26 +1,19 @@
-/ import MinHeap class
-const MinHeap = require('./MinHeap');
+// import MinHeap class
+const MinHeap = require('./min-heaps-intro');
 
 // instantiate a MinHeap class
 const minHeap = new MinHeap();
 
-// helper function to return a random integer
-const randomize = () => Math.floor(Math.random() * 40);
-
-// populate minHeap with random numbers
-for (let i = 0; i < 6; i++) {
-  const num = randomize();
-  console.log(`.. Adding value ${num}`);
-  minHeap.add(num);
-  console.log('Content of min-heap', minHeap.heap);
+// populate minHeap with descending numbers from 10001 to 1
+console.log('Adding');
+for (let i=10000; i >=1; i--) {
+  minHeap.add(i);
 }
 
-// return the minimum value in the heap until heap is empty
-console.log('\n');
-for (let i = 0; i < 6; i++) {
-  console.log(`.. Removing minimum value ${minHeap.popMin()}`);
-  console.log('Content of min-heap', minHeap.heap);
-}
+// remove the minimum value from heap
+console.log('Removing');
+console.log('Minimum value = ' + minHeap.popMin());
+
 /*
 .. Adding value 35
 Content of min-heap [ null, 35 ]
